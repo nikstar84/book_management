@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                     else
                         view.setText("IP NOT PROVED");
                 } catch (Exception e) {
-                    view.setText("FEHLER");
+                    view.setText("FAILURE");
                 }
             }
         });
