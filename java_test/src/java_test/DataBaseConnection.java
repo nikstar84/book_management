@@ -21,13 +21,36 @@ public class DataBaseConnection {
             System.out.println(e.getMessage());
         }		
 	}
-
-	public void insertBook(Book b) {
+	
+	public String putIntoBD(Book b) {
+		final String cmd = "INSERT INTO books VALUES ("
+				+ "0,"
+				+ "'" + b.getTitle() + "'" +","
+				+ "'" + b.getSubtitle() + "'" +","
+				+ "'" + b.getAuthors() + "'" +","
+				+ "'" + b.getPublisher() + "'" +","
+				+ new Integer(b.getPages()).toString() +","
+				+ "'" + b.getPublishingDate() + "'" +","
+				+ "'" + b.getDescription() + "'" +","
+				+ "'" + b.getLanguage() + "'" +","
+				+ "'" + b.getImgLink() + "'" +","
+				+ "'" + b.getIsbn() + "'"
+				+");";
 		try {
-			
+			System.out.println(cmd);
+			executeCommand(cmd);
+			return "ALRIGHT";
 		} catch (Exception e) {
-			// TODO: handle exception
+			return "ERROR: "+ e.getMessage();
 		}
+	}
+
+	private void executeCommand(String com) throws Exception
+	{
+		Connection con = DriverManager.getConnection(url);
+		Statement stmt = con.createStatement();
+        // create a new table
+        stmt.execute(com);
 	}
 	
 	public List<Book> getAllBooks() {

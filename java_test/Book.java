@@ -41,16 +41,16 @@ public class Book {
     }
 
     public Book(JSONObject obj) throws JSONException {
-            this.title = obj.optString("title");
-            this.subtitle = obj.optString("subtitle");;
-            this.publisher = obj.optString("publisher");;
-            this.authors = obj.optJSONArray("authors").toString();;
-            this.pages = obj.optInt("pageCount");;
-            this.publishingDate = obj.optString("publishedDate");;
-            this.description = obj.optString("description");;
-            this.language = obj.optString("language");;
-            this.isbn = new BigInteger(obj.optJSONArray("industryIdentifiers").optJSONObject(0).optString("identifier"));
-            this.imgLink = obj.optJSONObject("imageLinks").getString("thumbnail");
+    	this.title = obj.optString("title");
+        this.subtitle = obj.optString("subtitle");
+        this.publisher = obj.optString("publisher");
+        this.authors = obj.optString("authors");
+        this.pages = obj.optInt("pages");
+        this.publishingDate = obj.optString("publishingDate");
+        this.description = obj.optString("description");
+        this.language = obj.optString("language");
+        this.isbn = new BigInteger(obj.optString("isbn"));
+        this.imgLink = obj.optString("imgLink");
     }
 
     public String getImgLink() {

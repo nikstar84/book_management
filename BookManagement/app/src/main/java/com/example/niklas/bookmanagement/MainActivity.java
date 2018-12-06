@@ -66,10 +66,11 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     ip = num.getText().toString();
                     final String resp = SimpleClient.sendRequestAndReceiveResponse(ip,8000, "CHECK");
-                    if(resp.contains("OK"))
+                    /*if(resp.contains("OK"))
                         view.setText("IP OK");
                     else
-                        view.setText("IP NOT PROVED");
+                        view.setText("IP NOT PROVED");*/
+                    view.setText(resp);
                 } catch (Exception e) {
                     view.setText("FAILURE");
                 }
@@ -88,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try{
-                    final String resp = SimpleClient.sendRequestAndReceiveResponse(ip,8000, view.getText().toString());
+                    final String resp = SimpleClient.sendRequestAndReceiveResponse(ip,8000, "NEW"+view.getText().toString());
                     if(resp.contains("ALRIGHT"))
                         view.setText("Successful");
                     else

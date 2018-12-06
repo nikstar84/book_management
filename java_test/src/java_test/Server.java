@@ -1,7 +1,9 @@
 package java_test;
 
+
 import java.io.IOException;
 import java.util.List;
+import org.json.JSONObject;
 
 public class Server extends SimpleServer {
 	
@@ -9,7 +11,7 @@ public class Server extends SimpleServer {
 
 	public Server(int port) {
 		super(port);
-		con = new DataBaseConnection("");
+		con = new DataBaseConnection("jdbc:sqlite:/home/niklas/db/book_database.db");
 	}
 
 	@Override
@@ -17,7 +19,7 @@ public class Server extends SimpleServer {
 		try {
 			if(request.startsWith("CHECK"))
 				return "OK\n";
-			else if(request.startsWith("NEW"))
+			else if(request.startsWith("{"))
 			{
 				return putIntoDB(request);
 			}
@@ -53,9 +55,9 @@ public class Server extends SimpleServer {
 		}
 	}
 
-	private String putIntoDB(String request) {
-		// TODO Auto-generated method stub
-		return "";
+	private String putIntoDB(String request) throws Exception {
+		final Book b = new Book(new JSONObject(request));
+		return con.putIntoBD(b);
 	}
 
 	public static void main(String[] args) {

@@ -33,7 +33,6 @@ public class Setup {
 
         
         String com2 = "CREATE TABLE books("
-    	            +"id integer PRIMARY KEY,"
     	            +"packageNumber integer NOT NULL,"
     	            +"title text NOT NULL,"
     	            +"subtitle text,"
@@ -44,7 +43,7 @@ public class Setup {
     	            +"description text,"
     	            +"language text,"
     	            +"imgLink text,"
-    	            +"isbn text"+
+    	            +"isbn text UNIQUE"+
     	            ");";
     	            
         executeCommand(com2);
