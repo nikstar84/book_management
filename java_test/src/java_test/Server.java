@@ -3,6 +3,7 @@ package java_test;
 
 import java.io.IOException;
 import java.util.List;
+
 import org.json.JSONObject;
 
 public class Server extends SimpleServer {
@@ -12,6 +13,16 @@ public class Server extends SimpleServer {
 	public Server(int port) {
 		super(port);
 		con = new DataBaseConnection("jdbc:sqlite:/home/niklas/db/book_database.db");
+//		try {
+//			con.getBookByTitle("20000 Meilen unter den Meeren");
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+	}
+	
+	public void closeDB() throws Exception {
+		con.disconnect();
 	}
 
 	@Override
@@ -70,6 +81,16 @@ public class Server extends SimpleServer {
 			e.printStackTrace();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
+		}
+		finally {
+			try {
+				server.stop();
+				server.closeDB();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
 	}
 
