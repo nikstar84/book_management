@@ -5,6 +5,7 @@
  */
 package com.example.niklas.bookmanagement.data;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -15,7 +16,7 @@ import java.math.BigInteger;
  * @author nikla
  */
 public class Book {
-    private final BigInteger isbn;
+    private final String isbn;
     private final String title;
     private final String subtitle;
     private final String publisher;
@@ -26,7 +27,7 @@ public class Book {
     private final String language;
     private final String imgLink;
 
-    public Book(BigInteger isbn, String title, String subtitle, String publisher, String authors, int pages,
+    public Book(String isbn, String title, String subtitle, String publisher, String authors, int pages,
                 String publishingDate, String description,String language,String imgLink) {
         this.title = title;
         this.subtitle = subtitle;
@@ -40,6 +41,11 @@ public class Book {
         this.imgLink = imgLink;
     }
 
+    public void setIsbn(String isbn)
+    {
+
+    }
+
     public Book(JSONObject obj) throws JSONException {
             this.title = obj.optString("title");
             this.subtitle = obj.optString("subtitle");;
@@ -49,8 +55,25 @@ public class Book {
             this.publishingDate = obj.optString("publishedDate");;
             this.description = obj.optString("description");;
             this.language = obj.optString("language");;
-            this.isbn = new BigInteger(obj.optJSONArray("industryIdentifiers").optJSONObject(0).optString("identifier"));
-            this.imgLink = obj.optJSONObject("imageLinks").getString("thumbnail");
+            JSONArray isbnArray = obj.optJSONArray("industryIdentifiers");
+            String x = null;
+            if(isbnArray != null) {
+                for (int i = 0; i < isbnArray.length(); i++) {
+                    if(isbnArray.optJSONObject(i).optString("type").contentEquals("ISBN_13"))
+                    {
+                        x = isbnArray.optJSONObject(i).optString("identifier");
+                    }
+                }
+            }
+            if (x == null) {
+                x = isbnArray.optJSONObject(0).optString("identifier");
+            }
+            this.isbn = x;
+            JSONObject iL = obj.optJSONObject("imageLinks");
+            if(iL == null)
+                this.imgLink = "";
+            else
+                this.imgLink = iL.optString("thumbnail");
     }
 
     public String getImgLink() {
@@ -90,7 +113,7 @@ public class Book {
     }
 
     public String getIsbn() {
-        return isbn.toString();
+        return isbn;
     }
     
     @Override
@@ -110,7 +133,7 @@ public class Book {
             o.putOpt("publishingDate",publishingDate);
             o.putOpt("description",description);
             o.putOpt("language",language);
-            o.putOpt("isbn",isbn.toString());
+            o.putOpt("isbn",isbn);
             o.putOpt("imgLink",imgLink);
             //return o;
 

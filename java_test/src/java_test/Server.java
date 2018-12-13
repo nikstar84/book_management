@@ -9,24 +9,24 @@ import org.json.JSONObject;
 public class Server extends SimpleServer {
 	
 	private final DataBaseConnection con;
+	private final Loggger logger;
 
-	public Server(int port) {
+	public Server(int port){
 		super(port);
 		con = new DataBaseConnection("jdbc:sqlite:/home/niklas/db/book_database.db");
-//		try {
-//			con.getBookByTitle("20000 Meilen unter den Meeren");
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		logger = new Loggger("/home/niklas/book_management/java_test/src/test.log");
+		logger.logInfo("Server started");
 	}
 	
 	public void closeDB() throws Exception {
 		con.disconnect();
+		logger.logInfo(" Server disconnected");
+		logger.close();
 	}
 
 	@Override
 	protected String createResponse(String request) {
+		logger.logInfo(" Incoming Request: "+request);
 		try {
 			if(request.startsWith("CHECK"))
 				return "OK\n";
@@ -39,7 +39,7 @@ public class Server extends SimpleServer {
 				return getData(request);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.logError(e.getMessage());
 		}
 		return "UNKWOWNCOMMAND";
 	}
@@ -50,7 +50,7 @@ public class Server extends SimpleServer {
 		String [] t = request.split(";");
 		switch (t[1]) {
 		case "BOOKBYID":
-			return con.getBookById(new Integer(t[2])).toJson().toString();
+			return con.getBookByIsbn(t[2]).toJson().toString();
 		case "BOOKBYTITLE":
 			return con.getBookByTitle(t[2]).toJson().toString();
 		case "BOOKSBYAUTHOR":
@@ -75,11 +75,11 @@ public class Server extends SimpleServer {
 		Server server = new Server(8000);
 		try {
 			server.start();
-			System.out.println("Server gestartet");
-			Thread.sleep(15000);
+			while(true)
+			{
+				;
+			}
 		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 		finally {

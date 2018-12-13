@@ -64,8 +64,10 @@ public class DataBaseConnection {
 		return books;
 	}
 	
-	public Book getBookById(int id) throws Exception {
-		Book b = new Book(null);
+	public Book getBookByIsbn(String id) throws Exception {
+		Statement stmt = conn.createStatement();
+		final ResultSet rs = stmt.executeQuery("Select * from books where isbn = '"+id+"';");
+		Book b = getBookFromRs(rs).get(0);
 		return b;
 	}
 	
@@ -74,28 +76,33 @@ public class DataBaseConnection {
 		final ResultSet rs = stmt.executeQuery("Select * from books where title = '"+title+"';");
 		//String res = rs.getString("authors");
 		//System.out.println(res.substring(1,res.length()-1).replaceAll("\"", ""));
-		Book b = getBookFromRs(rs);
+		Book b = getBookFromRs(rs).get(0);
 		return b;
 	}
 	
-	private Book getBookFromRs(ResultSet rs) throws Exception {
-		String res = rs.getString("authors");
-		Book b = new Book(rs.getString("isbn"),
-				rs.getString("title"),
-				rs.getString("subtitle"), 
-				rs.getString("publisher"),
-				res.substring(1,res.length()-1).replaceAll("\"", ""),
-				rs.getInt("pages"),
-				rs.getString("publishingDate"), 
-				rs.getString("description"),
-				rs.getString("language"),
-				rs.getString("imgLink"));
-		return b;
+	private List<Book> getBookFromRs(ResultSet rs) throws Exception {
+		List<Book> books = new ArrayList<>();
+		while(rs.next()){
+			String res = rs.getString("authors");
+			Book b = new Book(rs.getString("isbn"),
+					rs.getString("title"),
+					rs.getString("subtitle"), 
+					rs.getString("publisher"),
+					res.substring(1,res.length()-1).replaceAll("\"", ""),
+					rs.getInt("pages"),
+					rs.getString("publishingDate"), 
+					rs.getString("description"),
+					rs.getString("language"),
+					rs.getString("imgLink"));
+			books.add(b);
+		}
+		return books;
 	}
 
 	public List<Book> getBooksByAuthor(String aut) throws Exception {
-		List<Book> books = new ArrayList<>();
-		return books;
+		Statement stmt = conn.createStatement();
+		final ResultSet rs = stmt.executeQuery("Select * from books where authors like '%"+aut+"%';");
+		return getBookFromRs(rs);
 	}
 	
 	public void updateBook(int id, Book newData) {

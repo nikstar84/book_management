@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView view;
     EditText num;
+    EditText isbnField;
     ImageView imageView;
 
     String ip;
@@ -49,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         num =(EditText) findViewById(R.id.editText);
+        num.setText("192.168.1.114");
+        isbnField = (EditText) findViewById(R.id.editText2);
 
         view = (TextView) findViewById(R.id.textView);
 
@@ -57,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
         final Button sendButton = (Button) findViewById(R.id.button2);
         final Button cameraButton = (Button) findViewById(R.id.button3);
         final Button checkButton = (Button) findViewById(R.id.button4);
+        final Button isbnButton = (Button) findViewById(R.id.button5);
+        final Button getDataButton = (Button) findViewById(R.id.get_data);
         imageView = (ImageView) findViewById(R.id.imageView);
 
         checkButton.setOnClickListener(new View.OnClickListener() {
@@ -64,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //requestData(num.getText().toString());
                 try {
+                    //num.setText("192.168.1.114");
                     ip = num.getText().toString();
                     final String resp = SimpleClient.sendRequestAndReceiveResponse(ip,8000, "CHECK");
                     /*if(resp.contains("OK"))
@@ -74,6 +80,20 @@ public class MainActivity extends AppCompatActivity {
                 } catch (Exception e) {
                     view.setText("FAILURE");
                 }
+            }
+        });
+
+        isbnButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                requestData(isbnField.getText().toString());
+            }
+        });
+
+        getDataButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getDataFromServer();
             }
         });
 
@@ -89,11 +109,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try{
-                    final String resp = SimpleClient.sendRequestAndReceiveResponse(ip,8000, "NEW"+view.getText().toString());
-                    if(resp.contains("ALRIGHT"))
-                        view.setText("Successful");
-                    else
-                        view.setText("Uncertain");
+                    final String resp = SimpleClient.sendRequestAndReceiveResponse(ip,8000, view.getText().toString());
+                    view.setText(resp);
                 }
                 catch(Exception e)
                 {
@@ -101,6 +118,12 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void getDataFromServer()
+    {
+        Intent intent = new Intent(this, GetData.class);
+        startActivityForResult(intent,0);
     }
 
     public void scanBarcode(View v)

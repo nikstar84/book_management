@@ -11,6 +11,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.util.Scanner;
 
 /**
  *
@@ -67,23 +68,10 @@ public class SimpleClient
     {
         try
         {
-           /* final InetAddress ipAddress =
-                    InetAddress.getByName("www.google.at");//www.htl-kaindorf.ac.at");
-            System.out.println("IP-Adresse: "+ipAddress.getHostAddress());
-            
-            final InetAddress ipAddress2 =
-                    InetAddress.getByName("95.143.172.237");
-            System.out.println(ipAddress2.getHostName());
-            
-            Socket socket = new Socket(ipAddress, 80);
-            System.out.println("GEWONNEN!!!");*/
-            
-             /*final String answer =
-                     sendRequestAndReceiveResponse(
-                             "www.brand.fleischer.at",80,
-                             "GET /index.php HTTP/1.0");*/
+           Scanner s = new Scanner(System.in);
+           String req = s.nextLine();
             final String answer =
-                sendRequestAndReceiveResponse("127.0.0.1",8000,"SET 0 1");
+                sendRequestAndReceiveResponse("127.0.0.1",8000,req);
              System.out.println("Antwort:");
              System.out.println(answer);
         }

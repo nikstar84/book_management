@@ -1,0 +1,36 @@
+13.12.2018 21:22:49 ; INFORMATION: Server started
+13.12.2018 21:22:54 ; INFORMATION:  Incoming Request: CHECK
+13.12.2018 21:30:09 ; INFORMATION:  Incoming Request: CHECK
+13.12.2018 21:30:39 ; INFORMATION:  Incoming Request: CHECK
+13.12.2018 21:30:58 ; INFORMATION:  Incoming Request: NEW{"title":"Tabu","subtitle":"","publisher":"","authors":"[\"Ferdinand von Schirach\"]","pages":256,"publishingDate":"2017-03","description":"","language":"de","isbn":"3442714982","imgLink":""}
+13.12.2018 21:31:43 ; INFORMATION:  Incoming Request: GET;BOOKSBYAUTHOR;Ferdinand von Schirach
+13.12.2018 21:32:57 ; INFORMATION:  Incoming Request: NEW{"title":"Tabu","subtitle":"","publisher":"","authors":"[\"Ferdinand von Schirach\"]","pages":256,"publishingDate":"2017-03","description":"","language":"de","isbn":"3442714982","imgLink":""}
+13.12.2018 21:34:14 ; INFORMATION:  Incoming Request: CHECK
+13.12.2018 21:34:15 ; INFORMATION:  Incoming Request: CHECK
+13.12.2018 21:34:16 ; INFORMATION:  Incoming Request: CHECK
+13.12.2018 21:34:16 ; INFORMATION:  Incoming Request: CHECK
+13.12.2018 21:34:16 ; INFORMATION:  Incoming Request: CHECK
+13.12.2018 21:34:16 ; INFORMATION:  Incoming Request: CHECK
+13.12.2018 21:34:21 ; INFORMATION:  Incoming Request: NEW{"title":"Tabu","subtitle":"","publisher":"","authors":"[\"Ferdinand von Schirach\"]","pages":256,"publishingDate":"2017-03","description":"","language":"de","isbn":"3442714982","imgLink":""}
+13.12.2018 21:35:33 ; INFORMATION:  Incoming Request: CHECK
+13.12.2018 21:37:24 ; INFORMATION:  Incoming Request: CHECK
+13.12.2018 21:37:25 ; INFORMATION:  Incoming Request: CHECK
+13.12.2018 21:37:25 ; INFORMATION:  Incoming Request: CHECK
+13.12.2018 21:37:25 ; INFORMATION:  Incoming Request: CHECK
+13.12.2018 21:37:25 ; INFORMATION:  Incoming Request: CHECK
+13.12.2018 21:37:26 ; INFORMATION:  Incoming Request: CHECK
+13.12.2018 21:37:27 ; INFORMATION:  Incoming Request: NEWOK
+13.12.2018 21:37:31 ; INFORMATION:  Incoming Request: NEWUNKWOWNCOMMAND
+13.12.2018 21:37:31 ; INFORMATION:  Incoming Request: NEWUNKWOWNCOMMAND
+13.12.2018 21:37:36 ; INFORMATION:  Incoming Request: NEW{"title":"Origin","subtitle":"","publisher":"","authors":"[\"Dan Brown\"]","pages":672,"publishingDate":"2018-08-31","description":"","language":"en","isbn":"3404177142","imgLink":""}
+13.12.2018 21:38:45 ; INFORMATION:  Incoming Request: CHECK
+13.12.2018 21:38:46 ; INFORMATION:  Incoming Request: CHECK
+13.12.2018 21:38:46 ; INFORMATION:  Incoming Request: CHECK
+13.12.2018 21:38:46 ; INFORMATION:  Incoming Request: CHECK
+13.12.2018 21:38:53 ; INFORMATION:  Incoming Request: {"title":"Verbrechen","subtitle":"Stories","publisher":"","authors":"[\"Ferdinand von Schirach\"]","pages":205,"publishingDate":"2010","description":"Der Autor, Anwalt und Strafverteidiger in Berlin, stellt ungewöhnliche Fälle aus seiner Praxis vor, in denen Angeklagte Hilfestellung von einer humanen Justiz erfahren und milde Urteile erreichen.","language":"de","isbn":"3492259669","imgLink":"http:\/\/books.google.com\/books\/content?id=WCwoSQAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"}
+13.12.2018 21:39:18 ; INFORMATION:  Incoming Request: {"title":"Tabu","subtitle":"","publisher":"","authors":"[\"Ferdinand von Schirach\"]","pages":256,"publishingDate":"2017-03","description":"","language":"de","isbn":"3442714982","imgLink":""}
+13.12.2018 21:47:12 ; INFORMATION:  Incoming Request: CHECK
+13.12.2018 21:47:24 ; INFORMATION:  Incoming Request: {"title":"Mit Python langweilige Jobs erledigen","subtitle":"Praktische Programmierlösungen für Einsteiger","publisher":"","authors":"[\"Al Sweigart\"]","pages":500,"publishingDate":"2016-05","description":"","language":"en","isbn":"386490353X","imgLink":""}
+13.12.2018 21:56:26 ; INFORMATION:  Incoming Request: CHECK
+13.12.2018 21:56:27 ; INFORMATION:  Incoming Request: CHECK
+13.12.2018 21:56:33 ; INFORMATION:  Incoming Request: {"title":"Mit Python langweilige Jobs erledigen","subtitle":"Praktische Programmierlösungen für Einsteiger","publisher":"","authors":"[\"Al Sweigart\"]","pages":500,"publishingDate":"2016-05","description":"","language":"en","isbn":"386490353X","imgLink":""}
