@@ -30,7 +30,7 @@ public class DataBaseConnection {
 	
 	public String putIntoBD(Book b) {
 		final String cmd = "INSERT INTO books VALUES ("
-				+ "0,"
+				+ new Integer(b.getPackageNumber()).toString() +","
 				+ "'" + b.getTitle() + "',"
 				+ "'" + b.getSubtitle() + "',"
 				+ "'" + b.getAuthors() + "',"
@@ -73,7 +73,7 @@ public class DataBaseConnection {
 	
 	public Book getBookByTitle(String title) throws Exception {
 		Statement stmt = conn.createStatement();
-		final ResultSet rs = stmt.executeQuery("Select * from books where title = '"+title+"';");
+		final ResultSet rs = stmt.executeQuery("Select * from books where title like '%"+title+"%';");
 		//String res = rs.getString("authors");
 		//System.out.println(res.substring(1,res.length()-1).replaceAll("\"", ""));
 		Book b = getBookFromRs(rs).get(0);
@@ -84,6 +84,7 @@ public class DataBaseConnection {
 		List<Book> books = new ArrayList<>();
 		while(rs.next()){
 			String res = rs.getString("authors");
+			//res.substring(0,res.length()-1).replaceAll("\"", "");
 			Book b = new Book(rs.getString("isbn"),
 					rs.getString("title"),
 					rs.getString("subtitle"), 
@@ -93,7 +94,9 @@ public class DataBaseConnection {
 					rs.getString("publishingDate"), 
 					rs.getString("description"),
 					rs.getString("language"),
-					rs.getString("imgLink"));
+					rs.getString("imgLink"),
+					rs.getInt("packageNumber"));
+		
 			books.add(b);
 		}
 		return books;

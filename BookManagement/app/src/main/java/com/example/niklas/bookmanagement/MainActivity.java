@@ -53,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
         num.setText("192.168.1.114");
         isbnField = (EditText) findViewById(R.id.editText2);
 
+        final EditText pField = (EditText) findViewById(R.id.packageNumber);
+
         view = (TextView) findViewById(R.id.textView);
 
         view.setText("");
@@ -93,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         getDataButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getDataFromServer();
+                getDataFromServer(v);
             }
         });
 
@@ -109,7 +111,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try{
-                    final String resp = SimpleClient.sendRequestAndReceiveResponse(ip,8000, view.getText().toString());
+                    String s = view.getText().toString();
+                    String t = s.substring(0,s.length()-1);
+                    String f = t + ",\"packageNumber\":" + pField.getText() + "}";
+                    final String resp = SimpleClient.sendRequestAndReceiveResponse(ip,8000, f);
                     view.setText(resp);
                 }
                 catch(Exception e)
@@ -120,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void getDataFromServer()
+    public void getDataFromServer(View v)
     {
         Intent intent = new Intent(this, GetData.class);
         startActivityForResult(intent,0);
@@ -177,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     JSONObject o = new JSONObject(response);
                     final Book book = new Book(o.getJSONArray("items").getJSONObject(0).getJSONObject("volumeInfo"));
-                    view.setText(book.toJson().toString());
+                    view.setText(book.toJson().toString().replace("'",""));
 
                     new Thread(){
                         @Override

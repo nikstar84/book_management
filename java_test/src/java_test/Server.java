@@ -39,15 +39,18 @@ public class Server extends SimpleServer {
 				return getData(request);
 			}
 		} catch (Exception e) {
-			logger.logError(e.getMessage());
+			logger.logError(e.toString());
+			e.printStackTrace();
 		}
 		return "UNKWOWNCOMMAND";
 	}
 	
-	// example protocol: GET;BOOKBYID;4 //returns the 4th book in the database
+	// example protocol: GET;BOOKBYID; //returns the 4th book in the database
 
 	private String getData(String request) throws Exception {
 		String [] t = request.split(";");
+		if(!(t[0].equals("GET")))
+			return "WRONGCOMMAND";
 		switch (t[1]) {
 		case "BOOKBYID":
 			return con.getBookByIsbn(t[2]).toJson().toString();

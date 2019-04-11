@@ -1,0 +1,28 @@
+11.04.2019 15:41:07 ; INFORMATION: Server started
+11.04.2019 15:41:09 ; INFORMATION:  Incoming Request: GET;BOOKBYTITLE;Parfum
+11.04.2019 15:48:15 ; INFORMATION:  Incoming Request: GET;BOOKBYTITLE;Parfum
+11.04.2019 15:48:24 ; INFORMATION:  Incoming Request: GET;BOOKBYTITLE;Ferdinand
+11.04.2019 15:48:24 ; ERROR: java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+11.04.2019 15:48:54 ; INFORMATION:  Incoming Request: GET;BOOKBYTITLE;tabu
+11.04.2019 15:49:16 ; INFORMATION:  Incoming Request: GET;BOOKBYTITLE;tabu
+11.04.2019 15:49:28 ; INFORMATION:  Incoming Request: GET;BOOKBYTITLE;schirach
+11.04.2019 15:49:28 ; ERROR: java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+11.04.2019 15:49:30 ; INFORMATION:  Incoming Request: GET;BOOKBYTITLE;schirach
+11.04.2019 15:49:30 ; ERROR: java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+11.04.2019 15:49:32 ; INFORMATION:  Incoming Request: GET;BOOKSBYAUTHOR;schirach
+11.04.2019 15:55:30 ; INFORMATION:  Incoming Request: CHECK
+11.04.2019 15:55:38 ; INFORMATION:  Incoming Request: GET;BOOKSBYAUTHOR;schirach
+11.04.2019 15:56:41 ; INFORMATION:  Incoming Request: CHECK
+11.04.2019 15:56:49 ; INFORMATION:  Incoming Request: GET;BOOKSBYAUTHOR;schirach
+11.04.2019 15:56:59 ; INFORMATION:  Incoming Request: GET;BOOKSBYAUTHOR;süskind
+11.04.2019 15:57:16 ; INFORMATION:  Incoming Request: GET;BOOKBYTITLE;tabu
+11.04.2019 15:58:22 ; INFORMATION:  Incoming Request: GET;BOOKSBYAUTHOR;süskind
+11.04.2019 16:02:04 ; INFORMATION:  Incoming Request: CHECK
+11.04.2019 16:02:52 ; INFORMATION:  Incoming Request: GET;BOOKSBYAUTHOR;schirach
+11.04.2019 16:04:06 ; INFORMATION:  Incoming Request: GET;BOOKBYTITLE;parfum
+11.04.2019 16:05:22 ; INFORMATION:  Incoming Request: GET;BOOKBYID;3257228007
+11.04.2019 16:05:36 ; INFORMATION:  Incoming Request: GET;BOOKBYID;3423137957
+11.04.2019 16:05:36 ; ERROR: java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+11.04.2019 16:05:49 ; INFORMATION:  Incoming Request: GET;BOOKBYID;3423137959
+11.04.2019 16:08:14 ; INFORMATION:  Incoming Request: {"title":"Pu der Bär","subtitle":"","publisher":"","authors":"[\"Alan A. Milne\"]","pages":327,"publishingDate":"2007","description":"Winnie Pu, der Bär mit großem Herz und 'sehr geringem Verstand' erlebt mit seinen Freunden Ferkel, I-Ah, Eule, Kaninchen, Känga, Klein Ruh und Tieger im Hundertmorgenwald herrliche Abenteuer voller Fantasie, Humor und Sprachwitz. Die Vorleseklassiker 'Pu,","language":"de","isbn":"9783570270455","imgLink":""}
+11.04.2019 16:08:55 ; INFORMATION:  Incoming Request: {"title":"Geisterritter","subtitle":"","publisher":"","authors":"[\"Cornelia Funke\"]","pages":252,"publishingDate":"2011","description":"John Whitcroft fühlt sich von seiner eigenen Mutter ins Internat nach Salisbury abgeschoben, weil er ihren neuen Freund nicht mag.Damit nicht genug, im Internat wird er von drei schrecklichen Geistern verfolgt, aber kein anderer sieht sie, bis auf ein Mädchen ... Ab 10.","language":"de","isbn":"9783791504797","imgLink":"http:\/\/books.google.com\/books\/content?id=xr_8ewEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"}

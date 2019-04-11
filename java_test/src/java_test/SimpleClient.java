@@ -74,6 +74,7 @@ public class SimpleClient
                 sendRequestAndReceiveResponse("127.0.0.1",8000,req);
              System.out.println("Antwort:");
              System.out.println(answer);
+             s.close();
         }
         catch (Exception ex)
         {

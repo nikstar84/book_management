@@ -6,4 +6,49 @@
     android:layout_height="match_parent"
     tools:context=".GetData">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <EditText
+            android:id="@+id/tParam"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:inputType="text"
+            android:hint="Parameter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/bAutor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Autor" />
+
+        <Button
+            android:id="@+id/bTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Titel" />
+
+        <Button
+            android:id="@+id/bISBN"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ISBN" />
+
+        <TextView
+            android:id="@+id/reqResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="" />
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

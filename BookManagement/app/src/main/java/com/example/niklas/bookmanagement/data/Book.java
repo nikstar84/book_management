@@ -26,9 +26,14 @@ public class Book {
     private final String description;
     private final String language;
     private final String imgLink;
+    private String packageNumber;
+
+    public void setPackageNumber(String packageNumber) {
+        this.packageNumber = packageNumber;
+    }
 
     public Book(String isbn, String title, String subtitle, String publisher, String authors, int pages,
-                String publishingDate, String description,String language,String imgLink) {
+                String publishingDate, String description, String language, String imgLink) {
         this.title = title;
         this.subtitle = subtitle;
         this.publisher = publisher;
@@ -47,15 +52,15 @@ public class Book {
     }
 
     public Book(JSONObject obj) throws JSONException {
-            this.title = obj.optString("title");
-            this.subtitle = obj.optString("subtitle");;
-            this.publisher = obj.optString("publisher");;
-            this.authors = obj.optJSONArray("authors").toString();;
-            this.pages = obj.optInt("pageCount");;
-            this.publishingDate = obj.optString("publishedDate");;
-            this.description = obj.optString("description");;
-            this.language = obj.optString("language");;
-            JSONArray isbnArray = obj.optJSONArray("industryIdentifiers");
+        this.title = obj.optString("title");
+        this.subtitle = obj.optString("subtitle");
+        this.publisher = obj.optString("publisher");
+        this.authors = obj.optJSONArray("authors").toString();
+        this.pages = obj.optInt("pageCount");
+        this.publishingDate = obj.optString("publishedDate");
+        this.description = obj.optString("description");
+        this.language = obj.optString("language");
+        JSONArray isbnArray = obj.optJSONArray("industryIdentifiers");
             String x = null;
             if(isbnArray != null) {
                 for (int i = 0; i < isbnArray.length(); i++) {
@@ -74,6 +79,21 @@ public class Book {
                 this.imgLink = "";
             else
                 this.imgLink = iL.optString("thumbnail");
+    }
+
+    public Book(String s) throws JSONException
+    {
+        JSONObject job = new JSONObject(s);
+        this.title = job.optString("title");
+        this.subtitle = job.optString("subtitle");
+        this.publisher = job.optString("publisher");
+        this.authors = job.optString("authors");
+        this.pages = job.optInt("pages");
+        this.publishingDate = job.optString("publishingDate");
+        this.description = job.optString("description");
+        this.language = job.optString("language");
+        this.isbn = job.optString("isbn");
+        this.imgLink = job.optString("imgLink");
     }
 
     public String getImgLink() {
